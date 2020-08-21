@@ -1,0 +1,51 @@
+<script>
+    let computerScore = 0;
+    let playerScore = 0;
+    //computer's Selection
+    function computerPlay() {
+        let computerChoice = ['Rock', 'Paper', 'Scissors'];
+        return computerChoice[Math.floor(Math.random() * computerChoice.length)]
+    }
+    
+    function playRound(playerSelection, computerSelection) {
+        let player = playerSelection.toLowerCase();
+        let computer = computerSelection.toLowerCase();
+        if ((player === 'rock' && computer === 'scissors') || 
+           (player === 'paper' && computer === 'rock') ||
+           (player === 'scissors' && computer === 'paper')){
+            alert ('You won! Great job :)');
+            playerScore++;
+        }
+        else if (player === computer) {
+            alert ('It\'s a draw!');
+        }
+        else {
+            alert ('You lose =(');
+            computerScore++;
+        }
+    }
+    
+    function game() {
+        for (i = 0; i < 5; i++) {
+            let playerSelection = prompt("What do you choose? Rock, paper or scissors?");
+            let computerSelection = computerPlay();
+            result = playRound(playerSelection, computerSelection);
+           
+        console.log("Player picked " + playerSelection);
+        console.log("Computer picked " + computerSelection)   
+        }
+    }
+    
+    game();
+    console.log("Player " + playerScore, "Computer " + computerScore);
+
+    if (playerScore > computerScore){
+        alert ('WINNER');
+    }
+    else if (playerScore === computerScore){
+        alert ('DRAW');
+    }
+    else {
+        alert ('LOSER');
+    }
+</script>
