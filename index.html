@@ -74,20 +74,20 @@
                     case "rockscissors":
                     case "paperrock":
                     case "scissorspaper":
-                        gameText.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
+                        gameText.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
                         playerScore++;
                         break;
         
                     case "rockrock":
                     case "paperpaper":
                     case "scissorsscissors":
-                        gameText.textContent = `It's a draw. You both chose ${computerSelection}`;
+                        gameText.textContent = `It's a draw. You both chose ${computerSelection}.`;
                         break;
         
                     case "rockpaper":
                     case "paperscissors":
                     case "scissorsrock":
-                        gameText.textContent = `You lose! ${playerSelection} loses to ${computerSelection}`;
+                        gameText.textContent = `You lose! ${playerSelection} loses to ${computerSelection}.`;
                         computerScore++;
                         break;
                 }
