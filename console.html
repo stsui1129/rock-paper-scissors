@@ -1,10 +1,10 @@
 <script>
     let computerScore = 0;
     let playerScore = 0;
-    //computer's Selection
+    
     function computerPlay() {
         let computerChoice = ['Rock', 'Paper', 'Scissors'];
-        return computerChoice[Math.floor(Math.random() * computerChoice.length)]
+        return computerChoice[Math.floor(Math.random() * computerChoice.length)];
     }
     
     function playRound(playerSelection, computerSelection) {
@@ -32,7 +32,7 @@
             result = playRound(playerSelection, computerSelection);
            
         console.log("Player picked " + playerSelection);
-        console.log("Computer picked " + computerSelection)   
+        console.log("Computer picked " + computerSelection);
         }
     }
     

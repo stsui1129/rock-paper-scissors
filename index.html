@@ -31,45 +31,23 @@
         <script>
             let computerScore = 0;
             let playerScore = 0;
+            const gameText = document.querySelector('#gameText');
 
-            function endGame() {
-                const buttons = document.querySelectorAll('button');
-                buttons.forEach(button => {
-                    button.disabled = true;
-                })
+              ////iterates through each selection button and adds a click listener which triggers playRound function
+            const selectionButtons = document.querySelectorAll('.selection');
+            selectionButtons.forEach(button => {
+                button.addEventListener('click', playRound);
+            });
 
-                const gameText = document.querySelector('#gameText');
-                const endSummary = document.createElement('p')
-
-                if (playerScore > computerScore) {
-                    endSummary.textContent = `You won the game ${playerScore}:${computerScore}`;
-                }
-                else {
-                    endSummary.textContent = `You lost the game ${playerScore}:${computerScore}`;
-                }
-
-                gameText.appendChild(endSummary);
-            }
-
-            function updateScore() {
-                document.querySelector('#playerScore').textContent = playerScore;
-                document.querySelector('#computerScore').textContent = computerScore;
-                
-                if (playerScore == 5 || computerScore == 5)
-                endGame();
-            }
-
-            //computer's Selection
             function computerPlay() {
                 let computerChoice = ['rock', 'paper', 'scissors'];
                 return computerChoice[Math.floor(Math.random() * computerChoice.length)]
-            }
+            } //random choice between 0,1,2 in the array
             
             function playRound() {
                 let playerSelection = this.dataset.key;
                 let computerSelection = computerPlay();
-                const gameText = document.querySelector('#gameText');
-
+                
                 switch(playerSelection + computerSelection){
                     case "rockscissors":
                     case "paperrock":
@@ -93,15 +71,39 @@
                 }
                 updateScore();
             }
+
+            function updateScore() {
+                document.querySelector('#playerScore').textContent = playerScore;
+                document.querySelector('#computerScore').textContent = computerScore;
+                
+                if (playerScore == 5 || computerScore == 5)
+                endGame();
+            }
+
+            function endGame() {
+                const gameText = document.querySelector('#gameText'); //gets a reference to gameText
+                const endSummary = document.createElement('p'); //creates a p element and stores it in endSummary
+                
+                if (playerScore > computerScore) {
+                    endSummary.textContent = `You won the game ${playerScore}:${computerScore}`;
+                }
+                else {
+                    endSummary.textContent = `You lost the game ${playerScore}:${computerScore}`;
+                }
+
+                gameText.appendChild(endSummary); //appends child node endSummary to the end of parent node gameText
+
+                const buttons = document.querySelectorAll('button'); 
+                buttons.forEach(button => {
+                    button.disabled = true;
+                });
+                
+
+            }
+
             
-            const selectionButtons = document.querySelectorAll('.selection');
-            selectionButtons.forEach(button => {
-                button.addEventListener('click', playRound);
-            })
+    
+
         </script>
-
-
-
-
     </body>
 </html>

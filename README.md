@@ -1,1 +1,5 @@
-In this project I made a simple Rock, Paper, Scissors game using JavaScript which can be played in the console.
+Rock, Paper, Scissors
+---
+In this project I made a simple rock, paper, scissors game using Javascript DOM manipulation and conditional statements.
+
+https://stsui1129.github.io/rock-paper-scissors/
