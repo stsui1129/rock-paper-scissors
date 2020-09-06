@@ -22,21 +22,38 @@
 
 
         <div id="selectionButtons">
-        <button type="button" class="selection" data-key="rock">rock</button>
-        <button type="button" class="selection" data-key="paper">paper</button>
-        <button type="button" class="selection" data-key="scissors">scissors</button>
+        <button class="selection" id="rock">rock</button>
+        <button class="selection" id="paper">paper</button>
+        <button class="selection" id="scissors">scissors</button>
         </div>
-
 
         <script>
             let computerScore = 0;
             let playerScore = 0;
             const gameText = document.querySelector('#gameText');
 
-              ////iterates through each selection button and adds a click listener which triggers playRound function
+            /*iterates through each selection button and adds a click listener which triggers playRound function
+            this can be used if data-key="rock" etc., however I chose to select each button individually
             const selectionButtons = document.querySelectorAll('.selection');
             selectionButtons.forEach(button => {
                 button.addEventListener('click', playRound);
+            });*/
+
+            const rockButton = document.querySelector("#rock");
+            const paperButton = document.querySelector("#paper");
+            const scissorsButton = document.querySelector("#scissors");
+
+            rockButton.addEventListener("click", () => {
+                playerSelection = "rock";
+                playRound();
+            });
+            paperButton.addEventListener("click", () => {
+                playerSelection = "paper";
+                playRound();
+            });
+            scissorsButton.addEventListener("click", () => {
+                playerSelection = "scissors";
+                playRound();
             });
 
             function computerPlay() {
@@ -45,7 +62,7 @@
             } //random choice between 0,1,2 in the array
             
             function playRound() {
-                let playerSelection = this.dataset.key;
+                //let playerSelection = this.dataset.key; can be used if data-key="rock" etc.
                 let computerSelection = computerPlay();
                 
                 switch(playerSelection + computerSelection){
@@ -98,12 +115,13 @@
                     button.disabled = true;
                 });
                 
-
+                const replay = document.createElement('button');
+                replay.textContent = "Play again?";
+                endSummary.appendChild(replay);
+                
+                //second argument = anonymous function that calls location.reload() which reloads current page
+                replay.addEventListener('click', () => location.reload());
             }
-
-            
-    
-
         </script>
     </body>
 </html>
